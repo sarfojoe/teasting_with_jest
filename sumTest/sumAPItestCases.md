@@ -9,9 +9,11 @@ Returns the sum of two numbers. Numbers are passed to the function a parameters.
 
 ## Test cases
 
-### function sum defined
+### 1. function sum defined
 
-### sums
+### 2. sums
+
+#### 2.1 integers
 
 - sum(1,1) returns 2
 - sum(2,3) returns 5
@@ -23,14 +25,21 @@ Returns the sum of two numbers. Numbers are passed to the function a parameters.
 - sum(3, 0) returns 3
 - sum(0,-3) returns -3
 - sum(-3,0) returns -3
+
+#### 2.2 floating points
+
 - sum(10, 11.5) returns 21.5
 - sum(2.5,3) returns 5.5
+- sum(-2.5,3) returns 0.5
+- sum(3, -2.5) returns 0.5
+- sum(-3, 2.5) returns -0.5
+- sum(-3,-2.5) returns -5.5
 - sum(-2.5, -2.5) returns -5
 - sum(2.5,2.5) returns 5
 - sum (-2.5, 2.5) returns 0
 - sum(2.4, -2.5) returns -0.1
 
-### missing parameters
+### 3. Missing parameters
 
 - sum() throws an exception `'parameter missing'`
 - sum(1) throws an exception `'parameter missing'`
@@ -43,3 +52,5 @@ Returns the sum of two numbers. Numbers are passed to the function a parameters.
 - sum(1, 'a') throws an exception `'only numbers allowed'`
 - sum('a','b') throws an exception `'only numbers allowed'`
 - sum('','') throws an exception `'only numbers allowed'`
+- sum(null,1) throws an exception `'parameter missing'`
+- sum(undefined,1) throws an exception `'parameter missing'`
