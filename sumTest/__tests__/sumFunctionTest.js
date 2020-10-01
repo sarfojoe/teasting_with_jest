@@ -156,3 +156,71 @@ describe("Parameters are not numbers in subtract", () => {
     }
   );
 });
+
+describe("Test division common cases", () => {
+  const testCases = [
+    [1, 2, 0.5],
+    [4, 2, 2],
+    [-4, 2, -2],
+    [4, -2, -2],
+    [-4, -2, 2],
+    [3, 3, 1],
+    [2.5, 3.5, 2.5 / 3.5],
+    [2.5, 3, 0.8333],
+  ];
+
+  test.each(testCases)("divide(%s,%s) = %s", (a, b, expected) => {
+    expect(functions.divide(a, b)).toBeCloseTo(expected);
+  });
+});
+
+describe("Test division special cases", () => {
+  const testCases = [
+    [0, 0, Number.NaN],
+    [2, 0, Number.POSITIVE_INFINITY],
+    [-2, 0, Number.NEGATIVE_INFINITY],
+    [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.NaN],
+    [Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY, Number.NaN],
+    [Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, Number.NaN],
+    [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY, Number.NaN],
+  ];
+
+  test.each(testCases)("divide(%s,%s)=%s", (a, b, expected) => {
+    expect(functions.divide(a, b)).toBe(expected);
+  });
+});
+
+describe("Missing parameters in divide", () => {
+  const testCases = [
+    [null, "parameter missing"],
+    [1, "parameter missing"],
+    ["a", "parameter missing"],
+    ["", "parameter missing"],
+  ];
+
+  test.each(testCases)(
+    "divide(%s) throws an exception: %s",
+    (testValue, expected) => {
+      expect(() => functions.divide(testValue)).toThrow(expected);
+    }
+  );
+});
+
+describe("Parameters are not numbers in divide", () => {
+  const testCases = [
+    ["a", 2, "only numbers allowed"],
+    [1, "a", "only numbers allowed"],
+    ["a", "b", "only numbers allowed"],
+    ["", "", "only numbers allowed"],
+    ["      ", " ", "only numbers allowed"],
+    [null, 1, "parameter missing"],
+    [undefined, 1, "parameter missing"],
+  ];
+
+  test.each(testCases)(
+    "divide(%s,%s) throws an exception %s",
+    (a, b, expected) => {
+      expect(() => functions.divide(a, b)).toThrow(expected);
+    }
+  );
+});
