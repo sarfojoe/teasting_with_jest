@@ -1,6 +1,6 @@
 # Dice class (API)
 
-This is a Dice class for dice games. Dice has a field that holds the number of dots. The number of dots is between 1 and a given upper bound. The maximun upper bound is 20. If the dice hasn't been rolled, the number of dots is 0.
+This is a Dice class for dice games. Dice has a field that holds the number of dots. The number of dots is between 1 and a given upper bound. The maximum upper bound is 20. If the dice hasn't been rolled, the number of dots is 0.
 
 ## Operations
 
@@ -8,11 +8,11 @@ This is a Dice class for dice games. Dice has a field that holds the number of d
 
 - initializes the dice with upper bound that is passed as parameter
 - initializes dot count to 0
-- if upper bound is missing then default upper bound is 6.
-- if upper bound is not an integer, throws an exception `'Upeer bound must be an integer'`;
-- if the upper bound is not between 1 and 29, an exception is thrown:
+- if upper bound is missing then the default upper bound is 6.
+- if upper bound in not an integer, throws an exception `'Upper bound must be an integer'`;
+- if the upper bound is not between 1 and 20, an exception is thrown:
   - upper bound > 20: `'Upper bound too big'`
-  - Upper bound < 1: `'Upper bound too small'`
+  - upper bound < 1: `'Upper bound too small'`
 
 ### **getters**
 
@@ -20,9 +20,9 @@ This is a Dice class for dice games. Dice has a field that holds the number of d
 
 - returns the lower bound of a dice. It should be 1.
 
-#### **maximumValue**
+#### **maximunValue**
 
-- returns the upper bound of a dice.
+- returns the upper bound of a dice
 
 #### **dots**
 
@@ -39,5 +39,5 @@ This is a Dice class for dice games. Dice has a field that holds the number of d
 
 #### **toString**
 
-- returns dot count as a string. For example `'4'`
-- if the dice has been rolled yet, returns a text `'Not rolled yet'`.
+- returns dot count as a string. For example: `'4'`
+- if the dice hasn't been rolled yet, returns a text `'Not rolled yet`.
