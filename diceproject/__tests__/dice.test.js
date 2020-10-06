@@ -10,7 +10,7 @@ describe("0. methods defined", () => {
   });
 
   test("getter maximumValue defined", () => {
-    expect(dice.maximunValue).toBeDefined();
+    expect(dice.maximumValue).toBeDefined();
   });
 
   test("roll is defined", () => {
@@ -26,11 +26,11 @@ describe("1. Create a dice with no upper bound", () => {
   });
 
   test("upper bound is 6", () => {
-    expect(dice.maximunValue).toBe(6);
+    expect(dice.maximumValue).toBe(6);
   });
 
   test("lower bound is 1", () => {
-    expect(dice.minimunValue).toBe(1);
+    expect(dice.minimumValue).toBe(1);
   });
 });
 
@@ -39,7 +39,7 @@ describe("2. and 5. Create a dice with given upper bound", () => {
 
   test.each(upperBounds)("test upper bound %s", (upperBound) => {
     let dice = new Dice(upperBound);
-    expect(dice.maximunValue).toBe(upperBound);
+    expect(dice.maximumValue).toBe(upperBound);
   });
 });
 
@@ -74,7 +74,25 @@ describe("6. test roll", () => {
 
   test("test when rolled", () => {
     dice.roll();
+    // expect.assertions(2);
     expect(dice.dots).toBeGreaterThanOrEqual(1);
     expect(dice.dots).toBeLessThanOrEqual(6);
+  });
+});
+
+describe("8 and 9 Testing toString", () => {
+  let dice;
+
+  beforeEach(() => {
+    dice = new Dice();
+  });
+
+  test("dice not rolled yet", () => {
+    expect(dice.toString()).toBe("Not rolled yet");
+  });
+
+  test("dice rolled", () => {
+    dice.roll();
+    expect(dice.toString()).toBe(`${dice.dots}`);
   });
 });
